@@ -1,28 +1,19 @@
 package com.example.queue_management_project;
 
-import android.app.Activity;
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import com.example.queue_management_project.databinding.FragmentPage1Binding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Page1Fragment#newInstance} factory method to
+ * Use the {@link PageRegister#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Page1Fragment extends Fragment {
-
+public class PageRegister extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,13 +23,8 @@ public class Page1Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    @NonNull
-    private FragmentPage1Binding binding;
 
-
-
-
-    public Page1Fragment() {
+    public PageRegister() {
         // Required empty public constructor
     }
 
@@ -48,11 +34,11 @@ public class Page1Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Page1Fragment.
+     * @return A new instance of fragment PageRegister.
      */
     // TODO: Rename and change types and number of parameters
-    public static Page1Fragment newInstance(String param1, String param2) {
-        Page1Fragment fragment = new Page1Fragment();
+    public static PageRegister newInstance(String param1, String param2) {
+        PageRegister fragment = new PageRegister();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,40 +49,16 @@ public class Page1Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       binding = FragmentPage1Binding.inflate(getLayoutInflater());
-       View view = binding.getRoot();
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         //View view = inflater.inflate(R.layout.fragment_page1, container, false);
-
-        binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (view.getId()==binding.buttonRegister.getId()) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_pageRegister);
-                }
-                else{
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_page2Fragment2);
-                }
-            }
-
-
-        });
-        return binding.getRoot();
-
+        return inflater.inflate(R.layout.fragment_page_register, container, false);
     }
-
-
 }

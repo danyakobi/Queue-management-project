@@ -1,6 +1,7 @@
 package com.example.queue_management_project;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 
 import com.example.queue_management_project.databinding.FragmentPage1Binding;
@@ -21,7 +23,8 @@ import com.example.queue_management_project.databinding.FragmentPage1Binding;
  * Use the {@link Page1Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Page1Fragment extends Fragment {
+public class Page1Fragment extends Fragment implements View.OnClickListener {
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -34,6 +37,9 @@ public class Page1Fragment extends Fragment {
     private String mParam2;
     @NonNull
     private FragmentPage1Binding binding;
+
+    private static boolean flag = false;
+
 
 
 
@@ -66,7 +72,6 @@ public class Page1Fragment extends Fragment {
        binding = FragmentPage1Binding.inflate(getLayoutInflater());
        View view = binding.getRoot();
 
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -77,26 +82,23 @@ public class Page1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-         //View view = inflater.inflate(R.layout.fragment_page1, container, false);
+        //Inflate the layout for this fragment
+         View view = inflater.inflate(R.layout.fragment_page1, container, false);
 
-        binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (view.getId()==binding.buttonRegister.getId()) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_pageRegister);
-                }
-                else{
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_page2Fragment2);
-                }
-            }
-
-
-        });
+        binding.buttonLogin.setOnClickListener(this);
+        binding.buttonRegister.setOnClickListener(this);
         return binding.getRoot();
 
     }
 
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == binding.buttonRegister.getId()) {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_pageRegister);
+        }
+        else {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page1Fragment2_to_page2Fragment2);
+        }
+    }
 }

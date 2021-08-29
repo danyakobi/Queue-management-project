@@ -36,7 +36,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/registerBack"
+            android:id="@+id/buttonRegisterBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,7 +47,7 @@
             app:backgroundTintMode="add" />
 
         <Button
-            android:id="@+id/registerSubmit"
+            android:id="@+id/buttonRegisterSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

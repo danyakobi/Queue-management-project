@@ -28,7 +28,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/registerBack"
+            android:id="@+id/buttonLoginBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,7 +39,7 @@
             app:backgroundTintMode="add" />
 
         <Button
-            android:id="@+id/registerSubmit"
+            android:id="@+id/buttonLoginSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

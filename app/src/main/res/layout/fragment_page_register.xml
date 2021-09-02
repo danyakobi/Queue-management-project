@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PageRegister" >
+    tools:context=".fragments.PageRegister" >
 
     <EditText
         android:id="@+id/registerFullName2"
@@ -24,12 +24,11 @@
         android:text="Enter password"/>
 
     <EditText
-        android:id="@+id/registerPhoneNumber2"
+        android:id="@+id/rgisterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone"
-        android:text="Enter phone number"/>
+        android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:layout_width="match_parent"

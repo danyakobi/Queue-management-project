@@ -1,21 +1,16 @@
-package com.example.queue_management_project;
+package com.example.queue_management_project.fragments;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.Button;
 
+import com.example.queue_management_project.R;
 import com.example.queue_management_project.databinding.FragmentPage1Binding;
 
 /**

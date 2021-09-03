@@ -83,7 +83,7 @@ public class PageRegister extends Fragment implements View.OnClickListener {
         else {
             firebaseDp firebase = firebaseDp.getInstance(getActivity());
             String email = binding.rgisterEmail.getText().toString();
-            String password = binding.registerPassword2.getText().toString();
+            String password = binding.registerPassword.getText().toString();
             firebase.createUser(email, password);
         }
 

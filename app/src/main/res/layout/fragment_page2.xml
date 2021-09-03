@@ -8,15 +8,15 @@
     tools:context=".fragments.Page2Fragment">
 
     <EditText
-        android:id="@+id/registerPhoneNumber"
+        android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone"
-        android:text="Enter phone number" />
+        android:inputType="textEmailAddress"
+        android:text="Enter Email" />
 
     <EditText
-        android:id="@+id/registerPassword"
+        android:id="@+id/LoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -88,12 +88,10 @@ public class PageRegister extends Fragment implements View.OnClickListener {
             String fullName = binding.registerFullName2.getText().toString();
             String phone = binding.registerPhone.getText().toString();
             String id = binding.registerID.getText().toString();
-            User myUser = null;
-            myUser.setFullName(fullName);
-            myUser.setId(id);
-            myUser.setPhone(phone);
+            User user = new User(fullName,id,phone);
 
             if (firebase.createUser(email, password)) {
+                firebase.funcAddData(user);
                 Navigation.findNavController(binding.getRoot()).navigate(R.id.action_pageRegister_to_page2Fragment2);
             }
             else {

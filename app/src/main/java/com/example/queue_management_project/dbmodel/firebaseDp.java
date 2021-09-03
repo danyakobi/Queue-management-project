@@ -80,8 +80,9 @@ public class firebaseDp {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseUser currentUser = myAuth.getCurrentUser();
         String uid = currentUser.getUid();
-        DatabaseReference myRef = database.getReference("User").child(uid);
+        DatabaseReference myRef = database.getReference("users").child(uid);
         myRef.setValue(user);
     }
+
 
 }

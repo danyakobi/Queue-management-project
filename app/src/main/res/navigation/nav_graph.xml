@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_page2Fragment2_to_page1Fragment2"
             app:destination="@id/page1Fragment2" />
+        <action
+            android:id="@+id/action_page2Fragment2_to_mainCalendarFragment"
+            app:destination="@id/mainCalendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/pageRegister"
@@ -36,4 +39,9 @@
             android:id="@+id/action_pageRegister_to_page2Fragment2"
             app:destination="@id/page2Fragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/mainCalendarFragment"
+        android:name="com.example.queue_management_project.fragments.MainCalendarFragment"
+        android:label="fragment_main_calendar"
+        tools:layout="@layout/fragment_main_calendar" />
 </navigation>

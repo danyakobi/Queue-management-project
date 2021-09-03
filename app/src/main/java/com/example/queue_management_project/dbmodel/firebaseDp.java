@@ -1,4 +1,6 @@
 package com.example.queue_management_project.dbmodel;
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -14,8 +16,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class firebaseDp {
     private static firebaseDp object;
@@ -78,11 +83,33 @@ public class firebaseDp {
 
     public void funcAddData(User user){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        FirebaseUser currentUser = myAuth.getCurrentUser();
-        String uid = currentUser.getUid();
+        //FirebaseUser currentUser = myAuth.getCurrentUser();
+        String uid = user.getFullName();
         DatabaseReference myRef = database.getReference("users").child(uid);
         myRef.setValue(user);
     }
 
+    public void getData(String uid){
+        // Read from the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //FirebaseUser currentUser = myAuth.getCurrentUser();
+        DatabaseReference myRef = database.getReference("users").child(uid);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                //get data by.........................................................!!!!!!
+                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
 
 }

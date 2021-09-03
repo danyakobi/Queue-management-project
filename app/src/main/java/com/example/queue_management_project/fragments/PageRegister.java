@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.queue_management_project.Activity.User;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.databinding.FragmentPageRegisterBinding;
 import com.example.queue_management_project.dbmodel.firebaseDp;
@@ -84,7 +85,20 @@ public class PageRegister extends Fragment implements View.OnClickListener {
             firebaseDp firebase = firebaseDp.getInstance(getActivity());
             String email = binding.rgisterEmail.getText().toString();
             String password = binding.registerPassword.getText().toString();
-            firebase.createUser(email, password);
+            String fullName = binding.registerFullName2.getText().toString();
+            String phone = binding.registerPhone.getText().toString();
+            String id = binding.registerID.getText().toString();
+            User myUser = null;
+            myUser.setFullName(fullName);
+            myUser.setId(id);
+            myUser.setPhone(phone);
+
+            if (firebase.createUser(email, password)) {
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_pageRegister_to_page2Fragment2);
+            }
+            else {
+                // pop up to user that FAIL REGISTER!!!!!!!!
+            }
         }
 
     }

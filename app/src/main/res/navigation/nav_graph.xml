@@ -32,5 +32,8 @@
         <action
             android:id="@+id/action_pageRegister_to_page1Fragment2"
             app:destination="@id/page1Fragment2" />
+        <action
+            android:id="@+id/action_pageRegister_to_page2Fragment2"
+            app:destination="@id/page2Fragment2" />
     </fragment>
 </navigation>

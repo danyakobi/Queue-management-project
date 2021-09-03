@@ -16,6 +16,21 @@
         android:text="Enter full name" />
 
     <EditText
+        android:id="@+id/registerID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="ID" />
+
+    <EditText
+        android:id="@+id/registerPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
         android:id="@+id/rgisterEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

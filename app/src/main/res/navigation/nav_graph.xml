@@ -43,5 +43,14 @@
         android:id="@+id/mainCalendarFragment"
         android:name="com.example.queue_management_project.fragments.MainCalendarFragment"
         android:label="fragment_main_calendar"
-        tools:layout="@layout/fragment_main_calendar" />
+        tools:layout="@layout/fragment_main_calendar" >
+        <action
+            android:id="@+id/action_mainCalendarFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.queue_management_project.fragments.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
 </navigation>

@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".fragments.MainCalendarFragment">
+    tools:context=".fragments.MainCalendarFragment"><![CDATA[>
 
-    <!-- TODO: Update blank fragment layout -->
+    ]]>
 
     <CalendarView
-        android:id="@+id/calendarViewMain"
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/buttonBackFromCalendar"
+        android:id="@+id/buttonSet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:text="Set Event" />
 
-    <Button
-        android:id="@+id/buttonSelectCalenderMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select" />
 
 </LinearLayout>

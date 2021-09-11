@@ -2,9 +2,11 @@ package com.example.queue_management_project.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -15,6 +17,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.provider.CalendarContract;
+import android.telecom.Call;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +28,9 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.queue_management_project.Activity.CalendarActivity;
 import com.example.queue_management_project.Activity.Event;
 import com.example.queue_management_project.Activity.MainActivity;
 import com.example.queue_management_project.R;
@@ -57,6 +63,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
     @NonNull
     private FragmentMainCalendarBinding binding;
     private String date;
+    private static final String KEY = "key";
 
     public MainCalendarFragment() {
         // Required empty public constructor
@@ -86,6 +93,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         binding = FragmentMainCalendarBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -105,7 +113,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
                 month = month +1;
                 date =  dayOfMonth  + "/" + month + "/" + year;
                 binding.textDate.setText(date);
-                Log.wtf("wtf","onSelectedDayChange:" + date);
+                //Log.wtf("wtf","onSelectedDayChange:" + date);
             }
         });
 
@@ -115,14 +123,20 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==binding.calendarView.getId()){
+        if(view.getId()==binding.buttonRemove.getId()){
+
+
+
+
 
 
         }
         else if (view.getId()==binding.buttonSet.getId() && date != null){
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_eventFragment);
-
-
+            //Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_eventFragment);
+            Intent i = new Intent(getActivity(), CalendarActivity.class);
+            i.putExtra(KEY , "eden");
+            startActivity(i);
+            //((Activity) getActivity()).overridePendingTransition(0, 0);
 
         }
 

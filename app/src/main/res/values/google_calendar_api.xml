@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <string name="google_calendar_key" templateMergeStrategy="preserve" translatable="false" >
+        AIzaSyDhTmCKgVp4r-RglQAcU6xf7Nw3NjxZDNY</string>
+</resources>

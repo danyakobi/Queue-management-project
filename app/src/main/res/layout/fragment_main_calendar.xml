@@ -26,5 +26,11 @@
         android:layout_height="wrap_content"
         android:text="Set Event" />
 
+    <Button
+        android:id="@+id/buttonRemove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove event" />
+
 
 </LinearLayout>

@@ -18,9 +18,9 @@
             android:id="@+id/text_time_slot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:text="9:00 - 9:30"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView

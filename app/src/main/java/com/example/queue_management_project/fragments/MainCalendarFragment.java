@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,8 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
     private FragmentMainCalendarBinding binding;
     private String date;
     private static final String KEY = "key";
-    LocalBroadcastManager localBroadcastManager;
+    public static final String KEY_DISPLAY_TIME_SLOT = "DISPLAY_TIME_SLOT";
+
 
     public MainCalendarFragment() {
         // Required empty public constructor
@@ -104,14 +106,14 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
 
         }
         else if (view.getId()==binding.buttonSet.getId() && date != null){
-            //Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_eventFragment);
-            Intent intent = new Intent(getActivity(), CalendarActivity.class);
-            intent.putExtra(KEY , "DISPLAY_TIME_SLOT");
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_mainBooking);
+            //Intent intent = new Intent(getActivity(), CalendarActivity.class);
+            //intent.putExtra(KEY_DISPLAY_TIME_SLOT , "DISPLAY_TIME_SLOT");
 
             //localBroadcastManager.sendBroadcast(intent);
             //Intent i = new Intent(getActivity(), CalendarActivity.class);
          //   i.putExtra(KEY , "eden");
-            startActivity(intent);
+            //startActivity(intent);
             //((Activity) getActivity()).overridePendingTransition(0, 0);
 
         }

@@ -18,9 +18,7 @@ import java.util.GregorianCalendar;
 
 public class CalendarActivity extends AppCompatActivity {
     public static final String KEY_DISPLAY_TIME_SLOT = "DISPLAY_TIME_SLOT";
-    private static final String KEY = "key";
-    private static String uid;
-    public static final Object DISABLE_TAG = "DISABLE";
+
 
 
 

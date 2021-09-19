@@ -60,5 +60,13 @@
         android:id="@+id/mainBooking"
         android:name="com.example.queue_management_project.fragments.MainBooking"
         android:label="fragment_main_booking"
-        tools:layout="@layout/fragment_main_booking" />
+        tools:layout="@layout/fragment_main_booking" >
+        <action
+            android:id="@+id/action_mainBooking_to_selectedDay"
+            app:destination="@id/selectedDay" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedDay"
+        android:name="com.example.queue_management_project.fragments.SelectedDay"
+        android:label="SelectedDay" />
 </navigation>

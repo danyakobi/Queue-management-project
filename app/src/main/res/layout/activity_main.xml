@@ -10,14 +10,14 @@
 
     <LinearLayout
         android:id="@+id/FrameLogo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.70">
+        android:layout_weight="0.999">
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/infinity_symbol_merged_with_scissors_7112ld" />
     </LinearLayout>

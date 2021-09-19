@@ -1,5 +1,6 @@
 package com.example.queue_management_project.fragments;
 
+import android.accounts.Account;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -88,6 +89,7 @@ public class Page2Fragment extends Fragment implements View.OnClickListener {
             String email = binding.loginEmail.getText().toString();
             String password = binding.loginPassword.getText().toString();
             if (firebase.login(email, password)){
+
                 Navigation.findNavController(binding.getRoot()).navigate(R.id.action_page2Fragment2_to_mainCalendarFragment);
             }
 

@@ -1,4 +1,4 @@
-package com.example.queue_management_project.Activity;
+package com.example.queue_management_project.Model;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ public class Event {
     public Event(Date date, String events) {
         this.date = date;
         this.events = events;
+
 
     }
 

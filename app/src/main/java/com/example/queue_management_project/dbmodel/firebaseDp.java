@@ -2,20 +2,16 @@ package com.example.queue_management_project.dbmodel;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 
-import com.example.queue_management_project.Activity.User;
-import com.example.queue_management_project.R;
+import com.example.queue_management_project.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +24,8 @@ public class firebaseDp {
     private static Activity activityDB;
     private static boolean flagLogin;
     private static boolean flagRegister;
+    private static String tempFullName;
+    private static String tempPhone;
 
     private firebaseDp(){
         myAuth = FirebaseAuth.getInstance();
@@ -38,6 +36,9 @@ public class firebaseDp {
             FirebaseApp.initializeApp(activity);
             activityDB=activity;
             object = new firebaseDp();
+
+
+
         }
         return object;
     }
@@ -87,6 +88,7 @@ public class firebaseDp {
         String uid = user.getFullName();
         DatabaseReference myRef = database.getReference("users").child(uid);
         myRef.setValue(user);
+
     }
 
     public void getData(String uid){
@@ -99,8 +101,14 @@ public class firebaseDp {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
+                User value = dataSnapshot.getValue(User.class);
+                tempFullName=value.getFullName();
+                tempPhone=value.getPhone();
+
                 //get data by.........................................................!!!!!!
+
+
+
                 Log.d(TAG, "Value is: " + value);
             }
 
@@ -111,5 +119,13 @@ public class firebaseDp {
             }
         });
     }
+    public User getUserDetails() {
+        User user = new User();
+        user.setFullName(tempFullName);
+        user.setPhone(tempPhone);
+        return user;
+    }
+
+
 
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import com.example.queue_management_project.R;
 import com.google.firebase.FirebaseApp;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
     private static final String KEY = "key";
 
@@ -17,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-
-    }
+}
 
 }
 

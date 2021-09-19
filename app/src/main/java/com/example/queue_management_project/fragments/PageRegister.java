@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.queue_management_project.Activity.User;
+import com.example.queue_management_project.Model.User;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.databinding.FragmentPageRegisterBinding;
 import com.example.queue_management_project.dbmodel.firebaseDp;

@@ -1,4 +1,4 @@
-package com.example.queue_management_project.Activity;
+package com.example.queue_management_project.Model;
 
 public class User {
     String fullName;
@@ -14,6 +14,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    public User(){}
+
 
     public String getFullName() {
         return fullName;

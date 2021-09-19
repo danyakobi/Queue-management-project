@@ -1,48 +1,19 @@
 package com.example.queue_management_project.fragments;
 
-import static android.content.ContentValues.TAG;
-
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import android.provider.CalendarContract;
-import android.telecom.Call;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.example.queue_management_project.Activity.CalendarActivity;
-import com.example.queue_management_project.Activity.Event;
-import com.example.queue_management_project.Activity.MainActivity;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.databinding.FragmentMainCalendarBinding;
-import com.example.queue_management_project.databinding.FragmentPage1Binding;
-import com.google.firebase.database.core.Tag;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +35,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
     private FragmentMainCalendarBinding binding;
     private String date;
     private static final String KEY = "key";
+    LocalBroadcastManager localBroadcastManager;
 
     public MainCalendarFragment() {
         // Required empty public constructor
@@ -133,9 +105,13 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         }
         else if (view.getId()==binding.buttonSet.getId() && date != null){
             //Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_eventFragment);
-            Intent i = new Intent(getActivity(), CalendarActivity.class);
-            i.putExtra(KEY , "eden");
-            startActivity(i);
+            Intent intent = new Intent(getActivity(), CalendarActivity.class);
+            intent.putExtra(KEY , "DISPLAY_TIME_SLOT");
+
+            //localBroadcastManager.sendBroadcast(intent);
+            //Intent i = new Intent(getActivity(), CalendarActivity.class);
+         //   i.putExtra(KEY , "eden");
+            startActivity(intent);
             //((Activity) getActivity()).overridePendingTransition(0, 0);
 
         }

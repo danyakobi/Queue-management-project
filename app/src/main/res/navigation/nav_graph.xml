@@ -45,17 +45,9 @@
         android:label="fragment_main_calendar"
         tools:layout="@layout/fragment_main_calendar" >
         <action
-            android:id="@+id/action_mainCalendarFragment_to_eventFragment"
-            app:destination="@id/eventFragment" />
-        <action
             android:id="@+id/action_mainCalendarFragment_to_mainBooking"
             app:destination="@id/mainBooking" />
     </fragment>
-    <fragment
-        android:id="@+id/eventFragment"
-        android:name="com.example.queue_management_project.fragments.EventFragment"
-        android:label="fragment_event"
-        tools:layout="@layout/fragment_event" />
     <fragment
         android:id="@+id/mainBooking"
         android:name="com.example.queue_management_project.fragments.MainBooking"
@@ -64,6 +56,9 @@
         <action
             android:id="@+id/action_mainBooking_to_selectedDay"
             app:destination="@id/selectedDay" />
+        <action
+            android:id="@+id/action_mainBooking_to_mainCalendarFragment"
+            app:destination="@id/mainCalendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectedDay"

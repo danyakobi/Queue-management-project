@@ -1,23 +1,28 @@
 package com.example.queue_management_project;
 
+import com.bumptech.glide.load.model.StringLoader;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+
 public class TimeSlot {
 
     public static String[] time = new String[]{
-            "Moshe", "Dani", "gal", "david","2",
-            "Moshe", "Dani", "gal", "david","2",
-            "Moshe", "Dani", "gal", "david","2",
-            "Moshe", "Dani", "gal", "david","2",
-            "Moshe", "Dani", "gal", "david","2"
+        "0","1","2", "3","4",
+       "5", "6", "7", "8","9",
+       "10", "11", "12", "13","14",
+        "15", "16", "17", "18","19"
 
     };
-    public static String[] description = new String[]{
-            "2", "3", "4", "5",
-            "2", "3", "4", "5",
-            "2", "3", "4", "5",
-            "2", "3", "4", "5",
-            "2", "3", "4", "5"
+   public static String[] description = new String[]{
+            "0","1","2", "3","4",
+            "5", "6", "7", "8","9",
+            "10", "11", "12", "13","14",
+            "15", "16", "17", "18","19"
     };
-
 
     public static String convertTimeSlotToString(int position) {
         switch (position) {
@@ -51,18 +56,22 @@ public class TimeSlot {
                 return "15:30 ~ 16:00";
             case 14:
                 return "16:00 ~ 16:30";
-            case 16:
+            case 15:
                 return "16:30 ~ 17:00";
-            case 17:
+            case 16:
                 return "17:00 ~ 17:30";
-            case 18:
+            case 17:
                 return "17:30 ~ 18:00";
-            case 19:
+            case 18:
                 return "18:00 ~ 18:30";
-            case 20:
+            case 19:
                 return "18:30 ~ 19:00";
             default:
                 return "Closed!";
         }
+    }
+
+    public Object getSlot() {
+        return time.length;// or time
     }
 }

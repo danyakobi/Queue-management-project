@@ -4,22 +4,43 @@ import java.util.Date;
 
 public class Event {
 
-    private Date date;
-    private String events;
+    private String NameEvent;
+    private String DateEvent;
+    private String TimeEvent;
 
-    public Event(Date date, String events) {
-        this.date = date;
-        this.events = events;
-
+    public Event(String name, String Date , String Time) {
+        this.NameEvent = name;
+        this.DateEvent=Date;
+        this.TimeEvent=Time;
 
     }
+    public Event(){}
 
-    public Date getDate() {
-        return date;
+    public String getNameEvent() {
+        return NameEvent;
     }
 
-    public String getEvents() {
-        return events;
+    public void setNameEvent(String nameEvent) {
+        NameEvent = nameEvent;
     }
+
+    public String getDateEvent() {
+        return DateEvent;
+    }
+
+    public void setDateEvent(String dateEvent) {
+        DateEvent = dateEvent;
+    }
+
+    public String getTimeEvent() {
+        return TimeEvent;
+    }
+
+    public void setTimeEvent(String timeEvent) {
+        TimeEvent = timeEvent;
+    }
+
+
+
 }
 

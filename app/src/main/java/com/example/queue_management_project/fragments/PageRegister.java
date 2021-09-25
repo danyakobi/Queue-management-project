@@ -92,6 +92,7 @@ public class PageRegister extends Fragment implements View.OnClickListener {
 
             if (firebase.createUser(email, password)) {
                 firebase.funcAddData(user);
+                firebase.UpdateUserDetails(user);
                 Navigation.findNavController(binding.getRoot()).navigate(R.id.action_pageRegister_to_page2Fragment2);
             }
             else {

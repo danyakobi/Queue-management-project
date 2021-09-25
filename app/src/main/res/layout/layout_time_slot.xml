@@ -8,8 +8,10 @@
     app:cardCornerRadius="4dp">
 
     <LinearLayout
+        android:id="@+id/LinearCarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="1dp"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -20,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="9:00 - 9:30"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -28,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
             android:text="Available"
             android:textSize="14sp"
             android:textStyle="italic" />

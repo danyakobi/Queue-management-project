@@ -14,13 +14,18 @@ import android.widget.CalendarView;
 
 import com.example.queue_management_project.Activity.CalendarActivity;
 import com.example.queue_management_project.R;
+import com.example.queue_management_project.TimeSlot;
 import com.example.queue_management_project.databinding.FragmentMainCalendarBinding;
+
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MainCalendarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class MainCalendarFragment extends Fragment implements View.OnClickListener {
 
 
@@ -34,7 +39,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
     private String mParam2;
     @NonNull
     private FragmentMainCalendarBinding binding;
-    private String date;
+    public static String CurrentDate;
     private static final String KEY = "key";
     public static final String KEY_DISPLAY_TIME_SLOT = "DISPLAY_TIME_SLOT";
 
@@ -85,8 +90,9 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 month = month +1;
-                date =  dayOfMonth  + "/" + month + "/" + year;
-                binding.textDate.setText(date);
+                CurrentDate =  dayOfMonth  + "/" + month + "/" + year;
+                binding.textDate.setText(CurrentDate);
+
                 //Log.wtf("wtf","onSelectedDayChange:" + date);
             }
         });
@@ -100,12 +106,8 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         if(view.getId()==binding.buttonRemove.getId()){
 
 
-
-
-
-
         }
-        else if (view.getId()==binding.buttonSet.getId() && date != null){
+        else if (view.getId()==binding.buttonSet.getId() && CurrentDate != null){
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_mainBooking);
             //Intent intent = new Intent(getActivity(), CalendarActivity.class);
             //intent.putExtra(KEY_DISPLAY_TIME_SLOT , "DISPLAY_TIME_SLOT");
@@ -119,6 +121,13 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         }
 
     }
+
+    public String getCurrentDate(){
+
+        return CurrentDate;
+
+    }
+
 
 
 

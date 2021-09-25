@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/drawable/button_design.xml" value="0.2203125" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/activity_calendar.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_date_picker.xml" value="0.2703125" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_page_register.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_profile.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_selected_day.xml" value="0.22056159420289856" />
-        <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_selected_success.xml" value="0.22056159420289856" />
+        <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/fragment_selected_success.xml" value="0.1" />
         <entry key="..\:/Users/Eden/AndroidStudioProjects/Queue-management-project/1/app/src/main/res/layout/layout_time_slot.xml" value="0.25" />
         <entry key="..\:/Users/danya/AndroidStudioProjects/Queuemanagementproject/app/src/main/res/drawable/button_design.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/danya/AndroidStudioProjects/Queuemanagementproject/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />

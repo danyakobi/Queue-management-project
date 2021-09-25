@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,7 +64,8 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
     private Button Confirm;
     private TextView textView;
     private TextView text_description;
-    private List<TimeSlot> timeSlots= new ArrayList<>();
+
+    private List<TimeSlot> timeSlots=new ArrayList<TimeSlot>();
     public static int i = 1;
 
 
@@ -113,6 +115,12 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
         recyclerView.setLayoutManager(gridLayoutManager);
         //recyclerView.setHasFixedSize(true);
         ListAdaptor listAdapter = new ListAdaptor(timeSlots,getContext()) ;
+        recyclerView.setItemAnimator(new DefaultItemAnimator());//maybe dont need
+        for (int i = 0; i < 20; i++ ){
+            timeSlots.add(new TimeSlot(TimeSlot.convertTimeSlotToString(i),""));
+        }
+        CheckEvents();
+
         recyclerView.setAdapter(listAdapter);
 
         back= (Button)itemView.findViewById(R.id.buttonRecycleBack);
@@ -161,7 +169,6 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
             Event event = new Event(name,date,time);
             firebase.funcAddEvent(event);
             firebase.getEvent();
-
             CheckEvents();
             //Intent intent = new Intent(Intent.ACTION_INSERT);
            //  intent.putExtra(CalendarContract.Events.TITLE, "Haircut to "+name);
@@ -184,6 +191,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
 
 
             //return from Calendar API to application->exit after add event
+
             //control with sync from API to application
 
             //Navigation to selectedSuccessFragments
@@ -196,11 +204,12 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
         {
             if (dateTime.equals(CurrentDate + CurrentTime));
             {
+                 tempdescription.setText("full");
+                 timeSlots.remove(CurrentTime);
 
-                    selectedCardView.setCardBackgroundColor(getContext().getColor(R.color.purple_700));
-                   // TimeSlot ev = new TimeSlot() ;
+                    //selectedCardView.setCardBackgroundColor(getContext().getColor(R.color.purple_700));
+                    // TimeSlot ev = new TimeSlot() ;
                     //timeSlots.add(ev); ;
-                    tempdescription.setText("full");
 
 
 
@@ -208,4 +217,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener  {
             }
         }
     }
+
+
+
 }

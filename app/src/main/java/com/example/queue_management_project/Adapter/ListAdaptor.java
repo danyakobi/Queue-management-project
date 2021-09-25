@@ -70,7 +70,7 @@ public class ListAdaptor extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return TimeSlot.time.length;
+        return mTimeSlotList.size();
     }
 
 

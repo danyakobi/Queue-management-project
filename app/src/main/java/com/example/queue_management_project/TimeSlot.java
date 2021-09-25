@@ -9,20 +9,13 @@ import java.util.List;
 
 
 public class TimeSlot {
+    String time;
+    String description;
 
-    public static String[] time = new String[]{
-        "0","1","2", "3","4",
-       "5", "6", "7", "8","9",
-       "10", "11", "12", "13","14",
-        "15", "16", "17", "18","19"
-
-    };
-   public static String[] description = new String[]{
-            "0","1","2", "3","4",
-            "5", "6", "7", "8","9",
-            "10", "11", "12", "13","14",
-            "15", "16", "17", "18","19"
-    };
+    public TimeSlot (String time , String description){
+        this.time=time;
+        this.description=description;
+    }
 
     public static String convertTimeSlotToString(int position) {
         switch (position) {
@@ -70,8 +63,7 @@ public class TimeSlot {
                 return "Closed!";
         }
     }
+    public String getTime(){return time;}
+    public String getDescription(){return description;}
 
-    public Object getSlot() {
-        return time.length;// or time
-    }
 }

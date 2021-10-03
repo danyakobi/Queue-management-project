@@ -1,6 +1,11 @@
 package com.example.queue_management_project.Adapter;
 
+import static com.example.queue_management_project.TimeSlot.getFull;
+import static com.example.queue_management_project.dbmodel.firebaseDp.eventList;
+import static com.example.queue_management_project.fragments.MainBooking.CheckEvents;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.queue_management_project.Model.Event;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.TimeSlot;
 
@@ -23,11 +29,14 @@ public class ListAdaptor extends RecyclerView.Adapter {
     private final LayoutInflater mLayoutInflater;
     private List<TimeSlot> mTimeSlotList;
     private static int lastClickedPosition = -1;
-    private int selectedItem;
+    public static  int selectedItem;
     public static String CurrentTime;
     public static TextView tempdescription;
     public static int publicPosition;
     public static CardView selectedCardView;
+    public static RecyclerView recycleViewHolder;
+    private int resultPosition = -1 ;
+    private boolean firstRun = false;
 
     public ListAdaptor(LayoutInflater mLayoutInflater, List<TimeSlot> timeSlotList){
         this.mLayoutInflater = mLayoutInflater;
@@ -37,19 +46,20 @@ public class ListAdaptor extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_time_slot,parent,false);
+
         return new ListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        //((ListViewHolder) holder).time.setText(new StringBuilder(TimeSlot.convertTimeSlotToString(position)));
         ((ListViewHolder) holder).bindView(position);
         ((ListViewHolder) holder).cardview.setCardBackgroundColor(mContext.getResources().getColor(android.R.color.background_light));
         if (selectedItem==position)
         {
              ((ListViewHolder) holder).cardview.setCardBackgroundColor(mContext.getResources().getColor(R.color.teal_700));
-             tempdescription =((ListViewHolder) holder).itemView.findViewById(R.id.text_time_slot_description);
+            tempdescription =((ListViewHolder) holder).itemView.findViewById(R.id.text_time_slot_description);
             selectedCardView  =((ListViewHolder) holder).cardview.findViewById(R.id.card_view);
-             //tempdescription.setText("full");
             CurrentTime =TimeSlot.convertTimeSlotToString(position);
             publicPosition=position;
 
@@ -61,6 +71,7 @@ public class ListAdaptor extends RecyclerView.Adapter {
                 selectedItem = position;
                 notifyItemChanged(previousItem);
                 notifyItemChanged(position);
+
 
 
             }
@@ -90,11 +101,17 @@ public class ListAdaptor extends RecyclerView.Adapter {
         public void bindView(int position) {
 
             time.setText(TimeSlot.convertTimeSlotToString(position));
-            //description.setText(TimeSlot.description[position]);
+            resultPosition=CheckEvents();
+            if(firstRun!=false) {
+                if (resultPosition == position) {
+                    description.setText(TimeSlot.getFull());
+                }
+            }
+            firstRun=true;
             time.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   if (selectedItem != getAdapterPosition())
+                   if (selectedItem == getAdapterPosition())
                     {
                         notifyItemChanged(selectedItem);
                        selectedItem=getAdapterPosition();

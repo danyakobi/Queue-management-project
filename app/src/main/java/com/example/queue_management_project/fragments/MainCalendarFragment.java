@@ -17,6 +17,7 @@ import com.example.queue_management_project.R;
 import com.example.queue_management_project.TimeSlot;
 import com.example.queue_management_project.databinding.FragmentMainCalendarBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
     public static String CurrentDate;
     private static final String KEY = "key";
     public static final String KEY_DISPLAY_TIME_SLOT = "DISPLAY_TIME_SLOT";
+    public static ArrayList<String> listDate= new ArrayList<String>();
 
 
     public MainCalendarFragment() {
@@ -93,6 +95,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
                 CurrentDate =  dayOfMonth  + "/" + month + "/" + year;
                 binding.textDate.setText(CurrentDate);
 
+
                 //Log.wtf("wtf","onSelectedDayChange:" + date);
             }
         });
@@ -108,6 +111,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
 
         }
         else if (view.getId()==binding.buttonSet.getId() && CurrentDate != null){
+
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_mainCalendarFragment_to_mainBooking);
             //Intent intent = new Intent(getActivity(), CalendarActivity.class);
             //intent.putExtra(KEY_DISPLAY_TIME_SLOT , "DISPLAY_TIME_SLOT");

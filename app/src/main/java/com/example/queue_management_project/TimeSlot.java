@@ -63,6 +63,10 @@ public class TimeSlot {
                 return "Closed!";
         }
     }
+    public static String getFull (){
+       return "full";
+
+    }
     public String getTime(){return time;}
     public String getDescription(){return description;}
 

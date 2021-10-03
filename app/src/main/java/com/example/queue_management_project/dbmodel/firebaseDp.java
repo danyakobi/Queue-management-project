@@ -28,7 +28,7 @@ public class firebaseDp {
     private static firebaseDp object;
     private static FirebaseAuth myAuth;
     private static Activity activityDB;
-    public static List<String> eventList=new ArrayList<>();
+    public static List<Event> eventList=new ArrayList<Event>();
     private static boolean flagLogin;
     private static boolean flagRegister;
       String tempFullName;
@@ -162,20 +162,23 @@ public class firebaseDp {
         DatabaseReference myRef = database.getReference("events").child(uid);
         myRef.setValue(event);
 
+
     }
     public void getEvent(){
         // Read from the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("events");
-        eventList.add("s");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 eventList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Event value = snapshot.getValue(Event.class);
-                    String temp = value.getDateEvent() + value.getTimeEvent();
-                    eventList.add(temp);
+                    //temp2.setDateEvent(value.getDateEvent());
+                    eventList.add(value);
+
+
+
                 }
             }
 

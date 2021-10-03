@@ -6,12 +6,19 @@ public class Event {
 
     private String NameEvent;
     private String DateEvent;
-    private String TimeEvent;
+    private  int Position;
 
-    public Event(String name, String Date , String Time) {
+
+    public Event(String nameEvent, String dateEvent, int pos) {
+        NameEvent = nameEvent;
+        DateEvent = dateEvent;
+        Position = pos;
+    }
+
+
+    public Event(String name, String Date) {
         this.NameEvent = name;
         this.DateEvent=Date;
-        this.TimeEvent=Time;
 
     }
     public Event(){}
@@ -32,14 +39,17 @@ public class Event {
         DateEvent = dateEvent;
     }
 
-    public String getTimeEvent() {
-        return TimeEvent;
+    public int getPositionEvent() {
+        return Position;
     }
 
-    public void setTimeEvent(String timeEvent) {
-        TimeEvent = timeEvent;
+    public void setPositionEvent(int  pos) {
+        Position = pos;
     }
 
+    public Event(String date){
+        this.DateEvent=date;
+    }
 
 
 }

@@ -1,6 +1,8 @@
 package com.example.queue_management_project.dbmodel;
 import static android.content.ContentValues.TAG;
 
+import static com.example.queue_management_project.fragments.MainCalendarFragment.listDate;
+
 import android.app.Activity;
 import android.util.Log;
 
@@ -174,10 +176,10 @@ public class firebaseDp {
                 eventList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Event value = snapshot.getValue(Event.class);
+
                     //temp2.setDateEvent(value.getDateEvent());
+                    //listDate.add(value.getDateEvent());
                     eventList.add(value);
-
-
 
                 }
             }

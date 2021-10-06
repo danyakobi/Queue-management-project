@@ -1,5 +1,6 @@
 package com.example.queue_management_project.fragments;
 
+import static com.example.queue_management_project.dbmodel.firebaseDp.eventList;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -13,9 +14,13 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 
 import com.example.queue_management_project.Activity.CalendarActivity;
+import com.example.queue_management_project.Adapter.ListAdaptor;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.TimeSlot;
 import com.example.queue_management_project.databinding.FragmentMainCalendarBinding;
+import com.example.queue_management_project.dbmodel.firebaseDp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,6 +80,8 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         View view = binding.getRoot();
 
 
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -99,7 +106,8 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
                 //Log.wtf("wtf","onSelectedDayChange:" + date);
             }
         });
-
+        firebaseDp firebase = firebaseDp.getInstance(getActivity());
+        firebase.getEvent();
        return binding.getRoot();
 
     }
@@ -131,6 +139,7 @@ public class MainCalendarFragment extends Fragment implements View.OnClickListen
         return CurrentDate;
 
     }
+
 
 
 

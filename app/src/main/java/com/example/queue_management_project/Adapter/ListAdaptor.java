@@ -1,8 +1,11 @@
 package com.example.queue_management_project.Adapter;
 
+import static android.app.PendingIntent.getActivity;
 import static com.example.queue_management_project.TimeSlot.getFull;
 import static com.example.queue_management_project.dbmodel.firebaseDp.eventList;
-import static com.example.queue_management_project.fragments.MainBooking.CheckEvents;
+//import static com.example.queue_management_project.fragments.MainBooking.CheckEvents;
+import static com.example.queue_management_project.fragments.MainBooking.listResult;
+import static com.example.queue_management_project.fragments.MainCalendarFragment.CurrentDate;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,7 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.queue_management_project.Model.Event;
 import com.example.queue_management_project.R;
 import com.example.queue_management_project.TimeSlot;
+import com.example.queue_management_project.dbmodel.firebaseDp;
 
+import java.sql.Time;
 import java.util.List;
 
 public class ListAdaptor extends RecyclerView.Adapter {
@@ -46,7 +51,6 @@ public class ListAdaptor extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_time_slot,parent,false);
-
         return new ListViewHolder(view);
     }
 
@@ -55,6 +59,7 @@ public class ListAdaptor extends RecyclerView.Adapter {
         //((ListViewHolder) holder).time.setText(new StringBuilder(TimeSlot.convertTimeSlotToString(position)));
         ((ListViewHolder) holder).bindView(position);
         ((ListViewHolder) holder).cardview.setCardBackgroundColor(mContext.getResources().getColor(android.R.color.background_light));
+        System.out.print(position);
         if (selectedItem==position)
         {
              ((ListViewHolder) holder).cardview.setCardBackgroundColor(mContext.getResources().getColor(R.color.teal_700));
@@ -62,6 +67,7 @@ public class ListAdaptor extends RecyclerView.Adapter {
             selectedCardView  =((ListViewHolder) holder).cardview.findViewById(R.id.card_view);
             CurrentTime =TimeSlot.convertTimeSlotToString(position);
             publicPosition=position;
+
 
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -101,13 +107,23 @@ public class ListAdaptor extends RecyclerView.Adapter {
         public void bindView(int position) {
 
             time.setText(TimeSlot.convertTimeSlotToString(position));
-            resultPosition=CheckEvents();
-            if(firstRun!=false) {
-                if (resultPosition == position) {
-                    description.setText(TimeSlot.getFull());
-                }
+
+            CheckEvents();
+            for (int i =0; i<listResult.size();i++) {
+
+               resultPosition = listResult.get(i);
+                System.out.println(resultPosition);
+                System.out.println(position);
+
+                //if (firstRun != false) {
+                    if (resultPosition == position) {
+                        description.setText(TimeSlot.getFull());
+                        System.out.println(TimeSlot.getFull());
+                    }
+               // }
+              //  firstRun=true;
             }
-            firstRun=true;
+            listResult.clear();
             time.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
@@ -130,6 +146,23 @@ public class ListAdaptor extends RecyclerView.Adapter {
         this.mContext=myText;
         this.mTimeSlotList=list;
         this.mLayoutInflater = LayoutInflater.from(this.mContext);
+    }
+
+    public static void CheckEvents()
+    {
+
+        for (int i = 0 ; i < eventList.size();i++) {
+            //System.out.println(dateTime.getDateEvent());
+            //System.out.println(CurrentDate+"h");
+            //System.out.println(eventList.get(i).getDateEvent()+"d");
+
+            if (eventList.get(i).getDateEvent().equals(CurrentDate)) {
+                listResult.add(eventList.get(i).getPositionEvent());
+                System.out.println(eventList.get(i).getPositionEvent());
+
+
+            }
+        }
     }
 
 }

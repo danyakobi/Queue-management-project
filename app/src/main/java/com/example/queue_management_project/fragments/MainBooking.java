@@ -47,7 +47,9 @@ import com.google.firebase.auth.FirebaseUser;
 import org.mortbay.io.nio.SelectorManager;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -69,7 +71,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
     private String mParam2;
     @NonNull
     private FragmentMainBookingBinding binding;
-    private ListAdaptor mAdapter;
+    public static  ListAdaptor mAdapter;
     private Button back;
     private Button Confirm;
     private TextView textView;
@@ -79,6 +81,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
     private RecyclerView recyclerView;
     public static List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
     public static int j =0;
+    public static List<Integer> listResult= new ArrayList<Integer>();
 
     public static int i = 1;
 
@@ -110,6 +113,8 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         binding = FragmentMainBookingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        firebaseDp firebase = firebaseDp.getInstance(getActivity());
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -130,19 +135,28 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
 
         //recyclerView.setHasFixedSize(true);
 
-        if (firstRun) {
-            for (int i = 0; i < 20; i++) {
-                timeSlots.add(new TimeSlot(TimeSlot.convertTimeSlotToString(i), ""));
-               firstRun = false;
+        //if (firstRun) {
+
+        for (int i = 0; i < 20; i++) {
+
+                    timeSlots.add(new TimeSlot(TimeSlot.convertTimeSlotToString(i), ""));
+                firstRun = false;
             }
-        }
-        recyclerView.setAdapter(listAdapter);
-        //else {
-        //    for (int i = 0; i < timeSlots.size(); i++) {
-        //        timeSlots.add(new TimeSlot(TimeSlot.convertTimeSlotToString(i), ""));
+       // }
+
+       // firebaseDp firebase1 = firebaseDp.getInstance(getActivity());
+       // firebase1.getEvent();
+       // mAdapter.CheckEvents();
+      //  for (int i = 0 ; i < eventList.size();i++) {
+            //System.out.println(dateTime.getDateEvent());
+            //System.out.println(CurrentDate);
+      //      System.out.println(eventList.get(i).getDateEvent()+"");
+         //   if (eventList.get(i).getDateEvent() == CurrentDate) {
+        //        listResult.add(eventList.get(i).getPositionEvent());
+
         //    }
-      //  }
-        //CheckEvents();
+       // }
+        recyclerView.setAdapter(listAdapter);
 
 
         back = (Button) itemView.findViewById(R.id.buttonRecycleBack);
@@ -161,8 +175,11 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
+
+
         if (view.getId() == back.getId()) {
             timeSlots.clear();
+            eventList.clear();
             //tempdescription.setText("Available");
             Navigation.findNavController(view).navigate(R.id.action_mainBooking_to_mainCalendarFragment);
         } else if (view.getId() == Confirm.getId()) {
@@ -176,6 +193,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             firebaseDp firebase = firebaseDp.getInstance(getActivity());
             Random rand = new Random();
+            String temp;
             int n = rand.nextInt(242125245);
 
             if (firebaseUser != null) {
@@ -191,18 +209,28 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
             Event event = new Event(name, date, publicPosition);
             firebase.funcAddEvent(event);
             firebase.getEvent();
-            //firstTimeRun = true;
-            CheckEvents();
-            listDate.add(CurrentDate);
-            //Intent intent = new Intent(Intent.ACTION_INSERT);
-            //  intent.putExtra(CalendarContract.Events.TITLE, "Haircut to "+name);
-            //  intent.setData(CalendarContract.Events.CONTENT_URI);
-            //  intent.setType("vnd.android.cursor.item/event");
-            // intent.putExtra(CalendarContract.Events.ACCOUNT_NAME,firebaseUser.getEmail());
+            listDate.add(date);
+            //mAdapter.CheckEvents();
+
+                //System.out.println(listDate.get(i));
+            //CheckEvents();
+            //Calendar calendar = Calendar.getInstance();
+            // calendar.add(Calendar.DATE,0);
+            // calendar.set(Calendar.HOUR_OF_DAY,0);
+            // calendar.set(Calendar.MINUTE,0);
+
+            // Timestamp toDayTimeStamp = new Timestamp(calendar.getTime());
+            //Intent intent = new Intent(Intent.ACTION_EDIT);
+            //intent.setType("vnd.android.cursor.item/event");
+            //intent.putExtra(CalendarContract.Events.TITLE, "Haircut to "+firebaseUser.getDisplayName());
+            //intent.setData(CalendarContract.Events.CONTENT_URI);
+            //intent.putExtra(CalendarContract.Events.ACCOUNT_NAME,firebaseUser.getEmail());
+           // intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, 21312);
+            //intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, 1534564);
             // intent.putExtra(CalendarContract.Events.DTSTART,time);//need to be in UTC millis
-            // intent.putExtra(CalendarContract.Events.DTEND,time);
+             ///intent.putExtra(CalendarContract.Events.DTEND,time);
             // intent.putExtra(CalendarContract.Events.RDATE,"May 05, 2012, 07:10PM");
-            // intent.putExtra(CalendarContract.Events.EXDATE,date);
+             //intent.putExtra(CalendarContract.Events.EXDATE,date);
             //startActivity(intent);
 
 
@@ -222,30 +250,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
 
     }
 
-    public static int CheckEvents()//need fix to func
-    {
 
-        for (int i = 0 ; i < eventList.size();i++) {
-            //System.out.println(dateTime.getDateEvent());
-            //System.out.println(CurrentDate);
-            //System.out.println(eventList.get(i).getDateEvent());
-            //System.out.println(listDate.size());
-
-            for ( j=0; j < listDate.size();j++){
-
-                System.out.println(listDate.get(j));
-
-                if (eventList.get(i).getDateEvent().equals(listDate.get(j)) ) {
-                    //tempdescription.setText("full");
-
-                    //listDate.remove(j);
-                    //System.out.println( eventList.get(i).getPositionEvent());
-                    return eventList.get(i).getPositionEvent();
-                }
-            }
-
-        }
-        return 100 ;
             //tempdescription.onSaveInstanceState();
 
             //mAdapter= new ListAdaptor(timeSlots,getContext());
@@ -260,7 +265,7 @@ public class MainBooking extends Fragment  implements View.OnClickListener {
 
             //check all event in firebase and set text full
 
-    }
+   // }
 
 
 }

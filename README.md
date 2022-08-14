@@ -1,3 +1,3 @@
 # Queue-management-project
 
-A barber diary system that allows you to make an appointment according to the barber's operating hours and the availability of appointments.
+The application was built using Android Studio and allows customers to make an appointment with the barber according to the hours of operation and the availability of the appointments.
